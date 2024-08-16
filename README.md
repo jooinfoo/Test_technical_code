@@ -35,7 +35,7 @@ This project consists of a frontend(ReactJS) and a backend(Django Python) . Foll
 1. **Navigate to the frontend directory:**
 
    ```bash
-   cd ../frontend
+   cd ../fe
    ```
 
 2. **Install the dependencies:**

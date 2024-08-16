@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+.input-number {
+  margin-top: 64px;
+  min-width: 128px;
+  width: 264px;
+}
+
+.container-button{
+  margin-top: 16px;
+}
+
+.button{
+  margin-left: 16px;
+}
