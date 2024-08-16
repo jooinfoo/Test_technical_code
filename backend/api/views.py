@@ -54,3 +54,37 @@ class PrimeNumberView(APIView):
         result = is_prime(number)
 
         return Response({"number": number, "is_prime": result}, status=status.HTTP_200_OK)
+      
+
+class StarTriangleView(APIView):
+    def post(self, request, *args, **kwargs):
+        input_value = request.data.get('number')
+
+        if input_value is None:
+            return Response({"error": "number is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            number = str(int(input_value))  # Ensure it's a string of digits
+        except ValueError:
+            return Response({"error": "number must be an integer"}, status=status.HTTP_400_BAD_REQUEST)
+
+        triangle_pattern = []
+        length = len(number)
+
+        for i in range(length):
+            digit = int(number[i])
+            if digit != 0:
+                # Multiply the digit by 10^i to get the correct value, then format with zeros
+                line_value = str(digit * (10 ** i))
+            else:
+                # For zeros, just add the appropriate number of zeros
+                line_value = '0' * (i + 2)
+            
+            # Add the line to the pattern
+            triangle_pattern.append(line_value)
+
+        # Join all lines with newline characters
+        result = "\n".join(triangle_pattern)
+
+        # Return the result directly as JSON
+        return Response({"triangle": result}, status=status.HTTP_200_OK)
